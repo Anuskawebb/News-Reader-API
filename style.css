@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #303041; /* Dark background */
+    margin: 0;
+    padding: 0;
+    color: #f1f1f1; /* Light text */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #282c34; /* Darker navbar */
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    color: #ae8ff5; /* Bright color for logo */
+    font-style: italic; /* Italic for logo */
+    letter-spacing: 2px; /* Space between letters */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+/* Search Bar Styles */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #444; /* Darker border */
+    background-color: #2d2d44; /* Input background */
+    color: #f1f1f1; /* Light text in input */
+    transition: border 0.3s, box-shadow 0.3s; 
+    width: 300px;/* Transition effects */
+}
+
+.search-bar input:focus {
+    border-color: #ffcc00; /* Highlight border */
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5); /* Glowing effect */
+}
+
+/* Button Styles */
+.nav-buttons button {
+    padding: 10px 15px; /* Padding for buttons */
+    border: none;
+    border-radius: 30px; /* Rounded edges */
+    cursor: pointer;
+    font-weight: bold; /* Bold text */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+}
+
+/* Search Button */
+#search-button {
+    background-color: #d261de; /* Blue background */
+    color: #ffffff; 
+    margin-left: 1rem;
+    border-radius: 25px;
+    height: 40px;
+    width: 100px;/* White text */
+}
+
+#search-button:hover {
+    background-color: #602d6d; /* Lighter blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Saved Button */
+#saved-button {
+    background-color: #b1cedb; /* Orange background */
+    color: #ffffff; /* White text */
+}
+
+#saved-button:hover {
+    background-color: #5765d4; /* Lighter orange on hover */
+    transform: translateY(-2px);
+    margin-right: 20px; 
+    /* Lift effect */
+}
+
+/* Favorites Button */
+#favourites-button {
+    background-color: #e7afcf; /* Green background */
+    color: #ffffff; /* White text */
+}
+
+#favourites-button:hover {
+    background-color: #631f60; /* Lighter green on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* News Container */
+#news-container {
+    padding: 100px 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* News Card */
+.news-card {
+    background-color: #282c34; /* Dark background for cards */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: fadeIn 0.5s ease; /* Fade-in animation */
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* News Card Content */
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #444; /* Darker border */
+}
+
+.news-card h3 {
+    font-size: 22px; /* Thicker title */
+    margin: 15px;
+    color: #9f9eee; /* Highlighted title color */
+    font-weight: bold; /* Bold title */
+}
+
+.news-card p {
+    font-size: 14px;
+    margin: 15px;
+    color: #ccc; /* Lighter description text */
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.news-card a {
+    margin: 15px;
+    color: #ffcc00; /* Highlighted link color */
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.news-card a:hover {
+    color: #fff; /* White on hover */
+}
+
+/* Animation for News Card Appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
