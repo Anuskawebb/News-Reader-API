@@ -21,7 +21,6 @@ function displayNews(articles) {
     newsContainer.innerHTML = ''; // Clear previous articles
 
     articles.forEach(article => {
-        // Only display if the article has a title and URL
         if (article.title && article.url) {
             const newsCard = document.createElement('div');
             newsCard.classList.add('news-card');
@@ -34,6 +33,8 @@ function displayNews(articles) {
                 <h3>${article.title}</h3>
                 <p>${newsDescription}</p>
                 <a href="${article.url}" target="_blank">Read More</a>
+                <button class="save-btn" onclick="saveNews('${article.title}', '${newsDescription}', '${newsImage}')">Save</button>
+                <button class="fav-btn" onclick="addToFavorites('${article.title}', '${newsDescription}', '${newsImage}')">Add to Favourites</button>
             `;
             
             newsContainer.appendChild(newsCard);
@@ -41,66 +42,9 @@ function displayNews(articles) {
     });
 }
 
-// Search Function
-function searchNews() {
-    const query = document.getElementById('search-input').value;
-    if (query) {
-        const searchUrl = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}`;
-        fetch(searchUrl)
-            .then(response => response.json())
-            .then(data => {
-                displayNews(data.articles);
-            })
-            .catch(error => console.error('Error fetching news:', error));
-    }
-}
-
-// Saved and Favorites (Placeholder functions)
-function viewSaved() {
-    alert('View saved articles functionality coming soon!');
-}
-
-function viewFavorites() {
-    alert('View favorite articles functionality coming soon!');
-}
-// Sample news data
-const newsData = [
-    {
-        title: "Breaking News 1",
-        description: "This is the first breaking news description.",
-        imageUrl: "https://via.placeholder.com/320x200"
-    },
-    {
-        title: "Breaking News 2",
-        description: "This is the second breaking news description.",
-        imageUrl: "https://via.placeholder.com/320x200"
-    },
-    // Add more news objects as needed
-];
-
-// Render the news cards on the page
-function renderNews(newsList) {
-    const newsContainer = document.getElementById("news-container");
-    newsContainer.innerHTML = ''; // Clear previous content
-
-    newsList.forEach(news => {
-        const newsCard = document.createElement('div');
-        newsCard.classList.add('news-card');
-        newsCard.innerHTML = `
-            <img src="${news.imageUrl}" alt="${news.title}">
-            <h3>${news.title}</h3>
-            <p>${news.description}</p>
-            <button class="save-btn" onclick="saveNews('${news.title}', '${news.description}', '${news.imageUrl}')">Save</button>
-        `;
-        newsContainer.appendChild(newsCard);
-    });
-}
-
 // Save news to localStorage
 function saveNews(title, description, imageUrl) {
     const savedNews = JSON.parse(localStorage.getItem('savedNews')) || [];
-    
-    // Check if the news already exists in savedNews to avoid duplication
     const isAlreadySaved = savedNews.some(news => news.title === title);
     
     if (!isAlreadySaved) {
@@ -112,42 +56,76 @@ function saveNews(title, description, imageUrl) {
     }
 }
 
-// Display saved news
-function renderSavedNews() {
-    const savedNews = JSON.parse(localStorage.getItem('savedNews')) || [];
+// Add news to favourites in localStorage
+function addToFavorites(title, description, imageUrl) {
+    const favoriteNews = JSON.parse(localStorage.getItem('favoriteNews')) || [];
+    const isAlreadyFavorite = favoriteNews.some(news => news.title === title);
     
-    if (savedNews.length === 0) {
-        alert('No saved news found.');
-        return;
+    if (!isAlreadyFavorite) {
+        favoriteNews.push({ title, description, imageUrl });
+        localStorage.setItem('favoriteNews', JSON.stringify(favoriteNews));
+        alert('News added to favorites!');
+    } else {
+        alert('News already in favorites!');
     }
-
-    const newsContainer = document.getElementById("news-container");
-    newsContainer.innerHTML = ''; // Clear previous content
-
-    savedNews.forEach(news => {
-        const newsCard = document.createElement('div');
-        newsCard.classList.add('news-card');
-        newsCard.innerHTML = `
-            <img src="${news.imageUrl}" alt="${news.title}">
-            <h3>${news.title}</h3>
-            <p>${news.description}</p>
-        `;
-        newsContainer.appendChild(newsCard);
-    });
 }
 
-// Clear saved news
-function clearSavedNews() {
-    localStorage.removeItem('savedNews');
-    alert('Saved news cleared!');
-    renderSavedNews();
+// View saved news
+function viewSaved() {
+    const savedNews = JSON.parse(localStorage.getItem('savedNews')) || [];
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = ''; // Clear previous articles
+
+    if (savedNews.length === 0) {
+        newsContainer.innerHTML = '<p>No saved news.</p>';
+    } else {
+        savedNews.forEach(news => {
+            const newsCard = document.createElement('div');
+            newsCard.classList.add('news-card');
+            newsCard.innerHTML = `
+                <img src="${news.imageUrl}" alt="${news.title}">
+                <h3>${news.title}</h3>
+                <p>${news.description}</p>
+            `;
+            newsContainer.appendChild(newsCard);
+        });
+    }
 }
 
-// Render the news on page load
-document.addEventListener('DOMContentLoaded', () => {
-    renderNews(newsData);
+// View favorite news
+function viewFavorites() {
+    const favoriteNews = JSON.parse(localStorage.getItem('favoriteNews')) || [];
+    const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = ''; // Clear previous articles
 
-    // Optional: Render saved news in a separate section if needed
-    // renderSavedNews();
-});
- document.addEventListener()
+    if (favoriteNews.length === 0) {
+        newsContainer.innerHTML = '<p>No favorite news.</p>';
+    } else {
+        favoriteNews.forEach(news => {
+            const newsCard = document.createElement('div');
+            newsCard.classList.add('news-card');
+            newsCard.innerHTML = `
+                <img src="${news.imageUrl}" alt="${news.title}">
+                <h3>${news.title}</h3>
+                <p>${news.description}</p>
+            `;
+            newsContainer.appendChild(newsCard);
+        });
+    }
+}
+
+// Function to search for news
+function searchNews() {
+    const query = document.getElementById('search-input').value;
+    if (query) {
+        const searchUrl = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}`;
+        fetch(searchUrl)
+            .then(response => response.json())
+            .then(data => {
+                displayNews(data.articles);
+            })
+            .catch(error => console.error('Error searching news:', error));
+    } else {
+        alert('Please enter a search term');
+    }
+}

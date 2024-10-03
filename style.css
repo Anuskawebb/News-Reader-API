@@ -1,10 +1,10 @@
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #202028; /* Dark background */
+    background-color: #202028;
     margin: 0;
     padding: 0;
-    color: #f1f1f1; /* Light text */
+    color: #f1f1f1;
 }
 
 /* Navbar */
@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1f232d; /* Darker navbar */
+    background-color: #1f232d;
     padding: 15px 20px;
     position: fixed;
     width: 100%;
@@ -22,17 +22,17 @@ body {
 }
 
 .logo {
-    font-size: 24px; /* Larger font size */
-    font-weight: bold; /* Bold text */
-    color: #ae8ff5; /* Bright color for logo */
-    font-style: italic; /* Italic for logo */
-    letter-spacing: 2px; /* Space between letters */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
-    transition: transform 0.3s; /* Transition for hover effect */
+    font-size: 24px;
+    font-weight: bold;
+    color: #ae8ff5;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
 }
 
 .logo:hover {
-    transform: scale(1.05); /* Slight enlargement on hover */
+    transform: scale(1.05);
 }
 
 /* Search Bar */
@@ -44,61 +44,57 @@ body {
 .search-bar input {
     padding: 10px;
     border-radius: 20px;
-    border: 1px solid #444; /* Darker border */
-    background-color: #2d2d44; /* Input background */
-    color: #f1f1f1; /* Light text in input */
-    transition: border 0.3s, box-shadow 0.3s;
+    border: 1px solid #444;
+    background-color: #2d2d44;
+    color: #f1f1f1;
     width: 300px;
 }
 
 .search-bar input:focus {
-    border-color: #ffcc00; /* Highlight border */
+    border-color: #ffcc00;
     outline: none;
-    box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5); /* Glowing effect */
+    box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
 }
 
 /* Button Styles */
 .nav-buttons button,
 .search-bar button {
-    padding: 10px 15px; /* Padding for buttons */
+    padding: 10px 15px;
     border: none;
-    border-radius: 30px; /* Rounded edges */
+    border-radius: 30px;
     cursor: pointer;
-    font-weight: bold; /* Bold text */
-    font-size: 14px; /* Font size */
-    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
-    margin-left: 10px; /* Ensure spacing between buttons */
-    color: #ffffff; /* White text for all buttons */
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px;
+    color: #ffffff;
 }
 
-/* Search Button */
 .search-bar button {
-    background-color: #6272a4; /* Match with website color theme */
+    background-color: #6272a4;
 }
 
 .search-bar button:hover {
-    background-color: #44475a; /* Darker on hover */
+    background-color: #44475a;
     transform: translateY(-2px);
 }
 
-/* Saved Button */
 .nav-buttons button:nth-child(1) {
-    background-color: #ff79c6; /* Pink to match theme */
+    background-color: #ff79c6;
 }
 
 .nav-buttons button:nth-child(1):hover {
-    background-color: #ff92d0; /* Lighter pink on hover */
+    background-color: #ff92d0;
     transform: translateY(-2px);
 }
 
-/* Favorites Button */
 .nav-buttons button:nth-child(2) {
     background-color: #8be9fd;
-    margin-right: 30px; /* Cyan to match theme */
+    margin-right: 30px;
 }
 
 .nav-buttons button:nth-child(2):hover {
-    background-color: #6dddfc; /* Lighter cyan on hover */
+    background-color: #6dddfc;
     transform: translateY(-2px);
 }
 
@@ -113,7 +109,7 @@ body {
 
 /* News Card */
 .news-card {
-    background-color: #282c34; /* Dark background for cards */
+    background-color: #282c34;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -122,7 +118,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    animation: fadeIn 0.5s ease; /* Fade-in animation */
+    animation: fadeIn 0.5s ease;
 }
 
 .news-card:hover {
@@ -130,32 +126,31 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* News Card Content */
 .news-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-bottom: 1px solid #444; /* Darker border */
+    border-bottom: 1px solid #444;
 }
 
 .news-card h3 {
-    font-size: 22px; /* Thicker title */
+    font-size: 22px;
     margin: 15px;
-    color: #9f9eee; /* Highlighted title color */
-    font-weight: bold; /* Bold title */
+    color: #9f9eee;
+    font-weight: bold;
 }
 
 .news-card p {
     font-size: 14px;
     margin: 15px;
-    color: #ccc; /* Lighter description text */
+    color: #ccc;
     line-height: 1.6;
     flex-grow: 1;
 }
 
 .news-card a {
     margin: 15px;
-    color: #ffcc00; /* Highlighted link color */
+    color: #ffcc00;
     font-weight: bold;
     text-decoration: none;
     display: inline-block;
@@ -163,22 +158,25 @@ body {
 }
 
 .news-card a:hover {
-    color: #fff; /* White on hover */
+    color: #fff;
 }
 
-/* Animation for News Card Appearance */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Buttons inside news card */
+.save-btn, .fav-btn {
+    background-color: #6272a4;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
 }
 
-/* Responsive Design */
+.save-btn:hover, .fav-btn:hover {
+    background-color: #44475a;
+}
+
 @media (max-width: 768px) {
     #news-container {
         flex-direction: column;
@@ -195,4 +193,3 @@ body {
         margin: 5px 0;
     }
 }
-
