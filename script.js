@@ -1,8 +1,7 @@
-// Your API key (replace with your actual API key)
 const apiKey = 'cef8cfffba7e435db7dae6fe16701d17';
 const apiUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=' + apiKey;
 
-// Load default news articles on page load
+// Load default news articles 
 document.addEventListener('DOMContentLoaded', loadDefaultNews);
 
 // Function to load default news articles
